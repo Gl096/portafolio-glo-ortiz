@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gloria Ortiz — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #FAF8F5;
+  --bg2:       #F0EDE7;
+  --ink:       #1C1A18;
+  --ink2:      #3D3A36;
+  --ink3:      #7A756E;
+  --sage:      #B8D4C8;
+  --sage-dark: #1E4236;
+  --blush:     #F2C4C4;
+  --blush-dark:#5E1F1F;
+  --butter:    #F5E4A0;
+  --butter-dark:#3E2E00;
+  --lavender:  #CEC4EC;
+  --lavender-dark:#2A1B5E;
+  --sky:       #B8D8F0;
+  --sky-dark:  #0A2D4A;
+  --peach:     #F5C9A8;
+  --peach-dark:#5C2800;
+  --border: rgba(28,26,24,0.1);
+  --font-d: 'Playfair Display', serif;
+  --font-b: 'Outfit', sans-serif;
+  --r: 16px;
+}
+
+html { scroll-behavior: smooth; }
+body { background:var(--bg); color:var(--ink); font-family:var(--font-b); font-size:16px; line-height:1.6; overflow-x:hidden; }
+
+/* NAV */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 56px; height:68px;
+  background:rgba(250,248,245,0.93); border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
+}
+.nav-logo { font-family:var(--font-d); font-weight:900; font-size:20px; color:var(--ink); text-decoration:none; }
+.nav-logo span { color:var(--sage-dark); }
+.nav-links { display:flex; gap:40px; list-style:none; }
+.nav-links a { font-size:13px; font-weight:500; letter-spacing:.06em; text-transform:uppercase; color:var(--ink3); text-decoration:none; transition:color .2s; }
+.nav-links a:hover { color:var(--ink); }
+
+/* HERO */
+.hero { min-height:100vh; padding-top:68px; display:grid; grid-template-columns:55% 45%; }
+
+.hero-left { display:flex; flex-direction:column; justify-content:center; padding:80px 60px 80px 80px; }
+
+.eyebrow {
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--sage); color:var(--sage-dark);
+  font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
+  padding:6px 18px; border-radius:100px; margin-bottom:36px; width:fit-content;
+}
+.hero-title {
+  font-family:var(--font-d); font-size:clamp(46px,5.2vw,78px);
+  font-weight:900; line-height:1.0; letter-spacing:-1.5px; color:var(--ink); margin-bottom:28px;
+}
+.hero-title em { font-style:italic; color:var(--sage-dark); }
+.hero-desc { font-size:17px; font-weight:300; color:var(--ink2); line-height:1.8; max-width:600px; margin-bottom:48px; }
+.ctas { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+.btn-f {
+  background:var(--ink); color:#fff; padding:14px 32px;
+  font-family:var(--font-b); font-size:13px; font-weight:600; letter-spacing:.08em;
+  text-transform:uppercase; text-decoration:none; border-radius:100px;
+  transition:background .2s, transform .15s;
+}
+.btn-f:hover { background:var(--sage-dark); transform:translateY(-2px); }
+.btn-g {
+  background:transparent; color:var(--ink); padding:14px 28px;
+  font-size:13px; font-weight:500; letter-spacing:.06em; text-transform:uppercase;
+  text-decoration:none; border-radius:100px; border:1.5px solid var(--border);
+  transition:border-color .2s;
+}
+.btn-g:hover { border-color:var(--ink); }
+
+/* Hero right mosaic */
+.hero-right { display:grid; grid-template-rows:1fr 1fr; gap:3px; background:var(--bg2); overflow:hidden; }
+.hmtop { background:var(--lavender); padding:44px; display:flex; flex-direction:column; justify-content:flex-end; }
+.hmtop h3 { font-family:var(--font-d); font-size:22px; font-weight:700; color:var(--lavender-dark); margin-bottom:10px; }
+.hmtop p { font-size:13px; font-weight:300; color:var(--lavender-dark); opacity:.8; line-height:1.7; }
+.hmbot { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+.hmc { padding:32px 28px; display:flex; flex-direction:column; justify-content:space-between; }
+.hmc:nth-child(1) { background:var(--butter); }
+.hmc:nth-child(2) { background:var(--sky); }
+.hmc-n { font-family:var(--font-d); font-size:42px; font-weight:900; line-height:1; }
+.hmc:nth-child(1) .hmc-n { color:var(--butter-dark); }
+.hmc:nth-child(2) .hmc-n { color:var(--sky-dark); }
+.hmc-l { font-size:11px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; }
+.hmc:nth-child(1) .hmc-l { color:var(--butter-dark); }
+.hmc:nth-child(2) .hmc-l { color:var(--sky-dark); }
+
+/* ABOUT */
+.about { padding:100px 80px; display:grid; grid-template-columns:1fr 1.8fr; gap:80px; border-top:1px solid var(--border); }
+.badge { display:inline-block; font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; padding:5px 14px; border-radius:100px; margin-bottom:20px; }
+.about-left h2 { font-family:var(--font-d); font-size:40px; font-weight:900; line-height:1.15; letter-spacing:-.5px; }
+.about-right { display:flex; flex-direction:column; justify-content:center; gap:20px; }
+.about-right p { font-size:16px; font-weight:300; color:var(--ink2); line-height:1.85; }
+.chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+.chip { font-size:12px; font-weight:500; padding:6px 14px; border-radius:100px; border:1.5px solid var(--border); color:var(--ink2); background:var(--bg); }
+.chip.ai { background:var(--sage); border-color:var(--sage); color:var(--sage-dark); font-weight:600; }
+.chip.res { background:var(--lavender); border-color:var(--lavender); color:var(--lavender-dark); font-weight:600; }
+
+/* PROJECTS */
+.projects { padding:0 80px 120px; }
+.proj-hdr {
+  padding:60px 0 56px; display:flex; align-items:flex-end; justify-content:space-between;
+  border-top:1px solid var(--border);
+}
+.proj-hdr h2 { font-family:var(--font-d); font-size:52px; font-weight:900; letter-spacing:-1.5px; line-height:1; }
+.proj-hdr p { font-size:14px; font-weight:300; color:var(--ink3); max-width:260px; text-align:right; }
+
+.pcard {
+  display:grid; grid-template-columns:4fr 1.4fr;
+  margin-bottom:3px; overflow:hidden; border-radius:var(--r);
+  border:1px solid var(--border); transition:transform .35s cubic-bezier(.22,.68,0,1.2), box-shadow .35s;
+  background:var(--bg); cursor:pointer;
+}
+.pcard:hover { transform:translateY(-6px); box-shadow:0 24px 64px rgba(0,0,0,.1); }
+.pcard.flip { grid-template-columns:1.4fr 4fr; }
+.pcard.flip .pimg { order:2; }
+.pcard.flip .pinfo { order:1; }
+
+.pimg { overflow:hidden; min-height:180px; position:relative; }
+.pimg img { width:100%; height:100%; object-fit:cover; object-position:top; display:block; transition:transform .6s ease; }
+.pcard:hover .pimg img { transform:scale(1.04); }
+.pimg.bg-sage   { background:var(--sage); }
+.pimg.bg-blush  { background:var(--blush); }
+.pimg.bg-butter { background:var(--butter); }
+.pimg.bg-sky    { background:var(--sky); }
+
+.pgrid { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:60% 40%; height:100%; gap:3px; }
+.pgrid img { width:100%; height:100%; object-fit:cover; display:block; }
+.pgrid img:first-child { grid-column:1/-1; }
+
+.pinfo { padding:52px 44px; display:flex; flex-direction:column; justify-content:space-between; }
+.pnum { font-family:var(--font-d); font-size:64px; font-weight:900; color:rgba(28,26,24,.05); line-height:1; margin-bottom:-10px; }
+.pcat { font-size:11px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; margin-bottom:10px; }
+.ptitle { font-family:var(--font-d); font-size:28px; font-weight:700; letter-spacing:-.3px; line-height:1.15; margin-bottom:16px; color:var(--ink); }
+.pdesc { font-size:14px; font-weight:300; color:var(--ink2); line-height:1.75; margin-bottom:24px; }
+.ptags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:28px; }
+.ptag { font-size:10px; font-weight:500; letter-spacing:.1em; text-transform:uppercase; color:var(--ink3); border:1px solid var(--border); padding:4px 10px; border-radius:100px; }
+.pmets { display:flex; gap:20px; padding:20px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); margin-bottom:24px; }
+.met { display:flex; flex-direction:column; }
+.met-v { font-family:var(--font-d); font-size:22px; font-weight:700; color:var(--ink); line-height:1; }
+.met-l { font-size:10px; font-weight:400; color:var(--ink3); text-transform:uppercase; letter-spacing:.1em; margin-top:3px; }
+.plink {
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:12px; font-weight:600; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink); text-decoration:none; border-bottom:1.5px solid var(--border);
+  padding-bottom:2px; width:fit-content; transition:color .2s, border-color .2s;
+}
+.plink:hover { border-color:var(--ink); }
+.plink::after { content:'→'; transition:transform .2s; }
+.plink:hover::after { transform:translateX(3px); }
+
+/* Banner image top of project card */
+.proj-banner { width:100%; overflow:hidden; border-radius:var(--r) var(--r) 0 0; }
+.proj-banner img { width:100%; height:340px; object-fit:cover; object-position:center 20%; display:block; transition:transform .6s ease; }
+.pcard:hover .proj-banner img { transform:scale(1.03); }
+
+/* PROCESS */
+.process {
+  padding:100px 80px; background:var(--ink); border-radius:var(--r);
+  margin:0 40px 80px; position:relative; overflow:hidden;
+}
+.process::before {
+  content:'PROCESS'; position:absolute; right:-20px; top:50%; transform:translateY(-50%) rotate(90deg);
+  font-family:var(--font-d); font-size:160px; font-weight:900;
+  color:rgba(255,255,255,.03); white-space:nowrap; pointer-events:none;
+}
+.proc-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:64px; }
+.proc-top h2 { font-family:var(--font-d); font-size:44px; font-weight:900; color:#fff; letter-spacing:-1px; line-height:1.1; }
+.proc-sub { font-size:14px; font-weight:300; color:rgba(255,255,255,.4); max-width:240px; text-align:right; line-height:1.6; }
+.steps { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; }
+.step { background:rgba(255,255,255,.04); padding:32px 28px; border-radius:12px; }
+.sdot { width:10px; height:10px; border-radius:50%; margin-bottom:20px; }
+.step:nth-child(1) .sdot { background:var(--sage); }
+.step:nth-child(2) .sdot { background:var(--blush); }
+.step:nth-child(3) .sdot { background:var(--butter); }
+.step:nth-child(4) .sdot { background:var(--lavender); }
+.snum { font-family:var(--font-d); font-size:40px; font-weight:900; color:rgba(255,255,255,.05); line-height:1; margin-bottom:12px; }
+.sname { font-size:16px; font-weight:600; color:#fff; margin-bottom:10px; }
+.sdesc { font-size:13px; font-weight:300; color:rgba(255,255,255,.4); line-height:1.7; }
+
+/* AWARDS */
+.awards { padding:0 80px 100px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:3px; }
+.acard { padding:44px 36px; border-radius:var(--r); display:flex; flex-direction:column; gap:16px; }
+.acard:nth-child(1) { background:var(--butter); }
+.acard:nth-child(2) { background:var(--peach); }
+.acard:nth-child(3) { background:var(--sky); }
+.aico { font-size:28px; }
+.atitle { font-family:var(--font-d); font-size:20px; font-weight:700; line-height:1.2; }
+.acard:nth-child(1) .atitle { color:var(--butter-dark); }
+.acard:nth-child(2) .atitle { color:var(--peach-dark); }
+.acard:nth-child(3) .atitle { color:var(--sky-dark); }
+.adesc { font-size:13px; font-weight:300; line-height:1.7; }
+.acard:nth-child(1) .adesc { color:var(--butter-dark); opacity:.8; }
+.acard:nth-child(2) .adesc { color:var(--peach-dark); opacity:.8; }
+.acard:nth-child(3) .adesc { color:var(--sky-dark); opacity:.8; }
+
+/* CONTACT */
+.contact { padding:100px 80px; border-top:1px solid var(--border); display:grid; grid-template-columns:1fr 1fr; gap:80px; }
+.contact-left h2 { font-family:var(--font-d); font-size:48px; font-weight:900; letter-spacing:-1.5px; line-height:1.05; margin-bottom:20px; }
+.contact-left p { font-size:16px; font-weight:300; color:var(--ink2); line-height:1.8; max-width:380px; }
+.citems { display:flex; flex-direction:column; gap:12px; justify-content:center; }
+.citem {
+  display:flex; align-items:center; gap:18px; padding:18px 22px;
+  border-radius:12px; text-decoration:none; color:var(--ink);
+  border:1.5px solid var(--border); background:var(--bg);
+  transition:transform .2s, border-color .2s, background .2s;
+}
+.citem:hover { transform:translateX(6px); border-color:var(--sage); background:var(--sage); }
+.citem:hover .cval { color:var(--sage-dark); }
+.cico { width:42px; height:42px; border-radius:10px; background:var(--ink); display:flex; align-items:center; justify-content:center; font-size:16px; color:#fff; flex-shrink:0; font-weight:600; }
+.clbl { font-size:10px; font-weight:500; color:var(--ink3); text-transform:uppercase; letter-spacing:.1em; }
+.cval { font-size:14px; font-weight:500; color:var(--ink); }
+
+/* FOOTER */
+footer { padding:28px 80px; border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+.flogo { font-family:var(--font-d); font-size:15px; font-weight:900; }
+.fcopy { font-size:12px; color:var(--ink3); }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+.eyebrow   { animation:fadeUp .5s ease both; }
+.hero-title{ animation:fadeUp .5s ease .08s both; }
+.hero-desc { animation:fadeUp .5s ease .16s both; }
+.ctas      { animation:fadeUp .5s ease .24s both; }
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:0 24px;}
+  .nav-links{gap:20px;}
+  .hero{grid-template-columns:1fr;}
+  .hero-left{padding:60px 24px;}
+  .hero-right{min-height:340px;}
+  .about{grid-template-columns:1fr;padding:60px 24px;gap:32px;}
+  .projects{padding:0 24px 80px;}
+  .proj-hdr{flex-direction:column;align-items:flex-start;gap:12px;}
+  .proj-hdr p{text-align:left;}
+  .pcard,.pcard.flip{grid-template-columns:1fr;}
+  .pcard.flip .pimg,.pcard.flip .pinfo{order:0;}
+  .pimg,.pgrid{min-height:280px;}
+  .process{margin:0 16px 60px;padding:60px 24px;}
+  .steps{grid-template-columns:1fr 1fr;gap:8px;}
+  .awards{grid-template-columns:1fr;padding:0 24px 60px;}
+  .contact{grid-template-columns:1fr;padding:60px 24px;gap:40px;}
+  footer{padding:24px;flex-direction:column;gap:8px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#inicio">Gloria<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#proyectos">Proyectos</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-left">
+    <div class="eyebrow">✦ Product Designer · Lima, Perú</div>
+    <h1 class="hero-title">
+      Diseño que <em>conecta</em> personas y negocio.
+    </h1>
+    <p class="hero-desc">Combino investigación de usuario, diseño end-to-end y herramientas de IA para construir soluciones digitales con impacto real — en fintech, healthtech y agrotech.</p>
+    <div class="ctas">
+      <a class="btn-f" href="#proyectos">Ver proyectos</a>
+      <a class="btn-g" href="#contacto">Conversemos</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hmtop">
+      <h3>IA-First &amp; Human-Centered</h3>
+      <p>Prototipo con Claude y Lovable.<br>Valido con Maze y Dovetail.</p>
+    </div>
+    <div class="hmbot">
+      <div class="hmc">
+        <div class="hmc-n">4<small style="font-size:.5em">+</small></div>
+        <div class="hmc-l">Años de<br>experiencia</div>
+      </div>
+      <div class="hmc">
+        <div class="hmc-n">1M<small style="font-size:.4em">+</small></div>
+        <div class="hmc-l">Usuarios<br>impactados</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="about" id="sobre-mi">
+  <div class="about-left">
+    <span class="badge" style="background:var(--blush);color:var(--blush-dark)">Sobre mí</span>
+    <h2>Creando sistemas además de interfaces de impacto.</h2>
+  </div>
+  <div class="about-right">
+    <p>Soy Product Designer con experiencia en entornos complejos y poco estructurados. Me muevo cómoda desde el discovery hasta el handoff — investigando, diseñando flujos, prototipando con IA y validando con usuarios reales antes de que el equipo de desarrollo escriba una línea de código.</p>
+    <p>A lo largo de los años, los productos que he diseñado han contribuido a mejorar la experiencia de los usuarios. He tenido la oportunidad de participar en el desarrollo de soluciones que hoy forman parte del uso cotidiano de muchas personas.</p>
+    <div class="chips">
+      <span class="chip ai">Claude AI</span>
+      <span class="chip ai">Lovable</span>
+      <span class="chip ai">Make</span>
+      <span class="chip ai">Framer</span>
+      <span class="chip">Figma</span>
+      <span class="chip">FigJam</span>
+      <span class="chip res">Maze</span>
+      <span class="chip res">Dovetail</span>
+      <span class="chip res">SPSS</span>
+      <span class="chip">Google Analytics</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section class="projects" id="proyectos">
+  <div class="proj-hdr">
+    <h2>Proyectos<br>seleccionados.</h2>
+    <p>Casos donde el diseño generó resultados medibles para el negocio y las personas.</p>
+  </div>
+
+  <!-- 01 Capacitadero -->
+  <div class="pcard">
+    <div class="pimg bg-sage">
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/a603d0231094757.688281331327b.png" alt="Capacitadero" onerror="this.style.opacity='0'"/>
+    </div>
+    <div class="pinfo">
+      <div>
+        <div class="pnum">01</div>
+        <div class="pcat" style="color:var(--sage-dark)">Design Research · UX/UI · Impacto Social</div>
+        <h3 class="ptitle">Product Designer: Capacitadero</h3>
+        <p class="pdesc">Plataforma de capacitación para potenciar habilidades en mujeres con discapacidad. Investigación de usuario, diseño de flujos complejos y prototipado de la experiencia completa — proyecto premiado internacionalmente.</p>
+        <div class="ptags">
+          <span class="ptag">UX Research</span>
+          <span class="ptag">Service Design</span>
+          <span class="ptag">Accesibilidad</span>
+          <span class="ptag">Figma</span>
+        </div>
+      </div>
+      <div>
+        <div class="pmets">
+          <div class="met"><span class="met-v">🏆</span><span class="met-l">Premio España 2023</span></div>
+          <div class="met"><span class="met-v">End-to-end</span><span class="met-l">Discovery → Handoff</span></div>
+        </div>
+        <a class="plink" href="https://www.behance.net/gallery/231094757/Product-designer-Capacitadero" target="_blank">Ver en Behance</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 Buscador de clínicas -->
+  <div class="pcard flip">
+    <div class="pimg bg-blush">
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/6710d6221666163.691f7354a0fb7.png" alt="Buscador de clínicas" onerror="this.style.opacity='0'"/>
+    </div>
+    <div class="pinfo">
+      <div>
+        <div class="pnum">02</div>
+        <div class="pcat" style="color:var(--blush-dark)">Healthtech · UX/UI · RIMAC</div>
+        <h3 class="ptitle">Buscador de clínicas</h3>
+        <p class="pdesc">Experiencia de búsqueda de centros médicos para el ecosistema RIMAC. Investigación de necesidades del paciente, arquitectura de información y prototipado de flujos que simplifican la búsqueda en momentos de urgencia.</p>
+        <div class="ptags">
+          <span class="ptag">UX Design</span>
+          <span class="ptag">Information Architecture</span>
+          <span class="ptag">Healthtech</span>
+          <span class="ptag">Figma</span>
+        </div>
+      </div>
+      <div>
+        <div class="pmets">
+          <div class="met"><span class="met-v">1M+</span><span class="met-l">Usuarios alcanzados</span></div>
+          <div class="met"><span class="met-v">RIMAC</span><span class="met-l">Producto lanzado</span></div>
+        </div>
+        <a class="plink" href="https://www.behance.net/gallery/221666163/Buscador-de-clinicas" target="_blank">Ver en Behance</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 Librería de diseño -->
+  <div class="pcard">
+    <div class="pimg bg-butter">
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/fs/448f98221673307.67d8c69dcf004.png" alt="Librería de diseño" onerror="this.style.opacity='0'"/>
+    </div>
+    <div class="pinfo">
+      <div>
+        <div class="pnum">03</div>
+        <div class="pcat" style="color:var(--butter-dark)">Design Systems · UI · Componentes</div>
+        <h3 class="ptitle">Librería de diseño</h3>
+        <p class="pdesc">Sistema de componentes visuales consistentes con identidad y personalidad de marca. Diseño de tokens, componentes reutilizables y documentación para equipos de producto que garantiza coherencia en cada pantalla.</p>
+        <div class="ptags">
+          <span class="ptag">Design System</span>
+          <span class="ptag">Componentes</span>
+          <span class="ptag">Tokens</span>
+          <span class="ptag">Figma</span>
+          <span class="ptag">Documentación</span>
+        </div>
+      </div>
+      <div>
+        <div class="pmets">
+          <div class="met"><span class="met-v">Scalable</span><span class="met-l">Design system</span></div>
+          <div class="met"><span class="met-v">Multi-equipo</span><span class="met-l">Adopción interna</span></div>
+        </div>
+        <a class="plink" href="https://www.behance.net/gallery/221673307" target="_blank">Ver en Behance</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 Design Research AGROS -->
+  <div class="pcard flip">
+    <div class="pimg bg-sky"></div>
+    <div class="pinfo">
+      <div>
+        <div class="pnum">04</div>
+        <div class="pcat" style="color:var(--sky-dark)">Agro Tech · Research · IVR · LatAm</div>
+        <h3 class="ptitle">Design Research AGROS</h3>
+        <p class="pdesc">Investigación y diseño de experiencia para productores agrícolas en Latinoamérica. Validé hipótesis con usuarios reales, diseñé el servicio IVR por voz y prototipé flujos que detectaron pain points antes del desarrollo.</p>
+        <div class="ptags">
+          <span class="ptag">Design Research</span>
+          <span class="ptag">IVR Design</span>
+          <span class="ptag">Usability Testing</span>
+          <span class="ptag">LatAm</span>
+        </div>
+      </div>
+      <div>
+        <div class="pmets">
+          <div class="met"><span class="met-v">25%</span><span class="met-l">Ahorro en desarrollo</span></div>
+          <div class="met"><span class="met-v">LatAm</span><span class="met-l">Alcance regional</span></div>
+        </div>
+        <a class="plink" href="https://www.behance.net/gallery/231094757" target="_blank">Ver en Behance</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="process" id="proceso">
+  <div class="proc-top">
+    <h2>Mi proceso<br>de diseño.</h2>
+    <p class="proc-sub">De la ambigüedad a soluciones que el equipo puede implementar hoy.</p>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="sdot"></div>
+      <div class="snum">01</div>
+      <div class="sname">Discovery</div>
+      <p class="sdesc">Research cuali y cuantitativo. Entrevistas, mapeo del journey, análisis de datos. Identifico el problema real antes de diseñar una sola pantalla.</p>
+    </div>
+    <div class="step">
+      <div class="sdot"></div>
+      <div class="snum">02</div>
+      <div class="sname">Síntesis</div>
+      <p class="sdesc">Convierto datos en insights accionables. Uso Dovetail y Claude para acelerar el análisis sin perder el criterio humano. Fundamento en datos reales.</p>
+    </div>
+    <div class="step">
+      <div class="sdot"></div>
+      <div class="snum">03</div>
+      <div class="sname">Prototipado</div>
+      <p class="sdesc">Flujos y prototipos en Figma. Prototipado rápido con Lovable y Make. Itero con velocidad sin sacrificar la calidad del producto final.</p>
+    </div>
+    <div class="step">
+      <div class="sdot"></div>
+      <div class="snum">04</div>
+      <div class="sname">Validación</div>
+      <p class="sdesc">Tests con Maze y usuarios reales. Decisiones basadas en datos. Entregables implementables orientados al impacto en negocio y en persona.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RECONOCIMIENTOS -->
+<section class="awards">
+  <div class="acard">
+    <div class="aico">🏆</div>
+    <div class="atitle">Hero Camp · Friends of Figma LA / USA</div>
+    <p class="adesc">Ganadora de mentorías gratuitas en San Francisco. Competitive Strategy, Design Leadership, Interface &amp; Prototyping Design, Teamwork.</p>
+  </div>
+  <div class="acard">
+    <div class="aico">🌟</div>
+    <div class="atitle">Premio Capacitadero · España 2023</div>
+    <p class="adesc">Ganadora del programa de mentoría para potenciar habilidades en mujeres con discapacidad. Proyecto reconocido e implementado internacionalmente.</p>
+  </div>
+  <div class="acard">
+    <div class="aico">📚</div>
+    <div class="atitle">Programa STEM · British Council Perú</div>
+    <p class="adesc">Capacitación de mentoría para mujeres en STEM. Liderazgo, investigación cuali/cuantitativa, análisis y síntesis, comunicación efectiva.</p>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact" id="contacto">
+  <div class="contact-left">
+    <span class="badge" style="background:var(--sky);color:var(--sky-dark)">Contacto</span>
+    <h2>¿Trabajamos<br>juntas?</h2>
+    <p>Estoy abierta a nuevas oportunidades y proyectos. Escríbeme y conversamos sobre cómo puedo aportar a tu equipo de producto.</p>
+  </div>
+  <div class="citems">
+    <a class="citem" href="/cdn-cgi/l/email-protection#baddd6d5c8d3db94d5c8ced7c0faddd7dbd3d694d9d5d7">
+      <div class="cico">✉</div>
+      <div><div class="clbl">Email</div><div class="cval"><span class="__cf_email__" data-cfemail="03646f6c716a622d6c71776e7943646e626a6f2d606c6e">[email&#160;protected]</span></div></div>
+    </a>
+    <a class="citem" href="tel:+51923729647">
+      <div class="cico">☎</div>
+      <div><div class="clbl">Teléfono</div><div class="cval">+51 923 729 647</div></div>
+    </a>
+    <a class="citem" href="https://www.linkedin.com/in/gloria-ortiz-m-066b55174/" target="_blank">
+      <div class="cico" style="font-family:serif;font-size:13px;font-weight:700">in</div>
+      <div><div class="clbl">LinkedIn</div><div class="cval">gloria-ortiz-m</div></div>
+    </a>
+    <a class="citem" href="https://www.behance.net/gloriaortiz9" target="_blank">
+      <div class="cico" style="font-size:12px">Be</div>
+      <div><div class="clbl">Behance</div><div class="cval">gloriaortiz9</div></div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span 
